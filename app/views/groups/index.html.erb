@@ -1,0 +1,22 @@
+<h1>Hi <%= current_user.first_name %> <%= current_user.last_name %></h1>
+<hr />
+<% if flash[:errors] %>
+  <%= flash[:errors] %>
+<% end %>
+<form action="/groups" method="post">
+  <h4>Creat a new organization:</h4>
+  <input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>" />
+  <p><input type="text" name="name" placeholder="Org Name" /></p>
+  <p><input type="text" name="description" placeholder="Description" /></p>
+  <input type="submit" value="Create" />
+</form>
+<hr />
+<h2>Here are the organizations you may join:</h2>
+<% if @groups %>
+  <% @groups.each do |group| %>
+    <p><a href="/groups/<%= group.id %>"><%= group.name %></a></p>
+    <p>Members: <%= group.memberships.count %></p>
+    <p><%= group.description %></p>
+    <hr />
+  <% end %>
+<% end %>
