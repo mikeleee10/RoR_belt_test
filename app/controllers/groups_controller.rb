@@ -5,7 +5,7 @@ class GroupsController < ApplicationController
   end
   def create
     new_group = current_user.groups.create(name: params[:name], description: params[:description])
-    if new_group
+    if new_group.valid?
       new_group.memberships.create(user: current_user)
       redirect_to '/groups'
     else

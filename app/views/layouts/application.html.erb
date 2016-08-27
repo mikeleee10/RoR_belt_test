@@ -7,11 +7,6 @@
   <%= csrf_meta_tags %>
 </head>
 <body>
-<% if flash[:errors] %>
-  <% flash[:errors].each do |e| %>
-    <p><%= e %></p>
-  <% end %>
-<% end %>
 <% if current_user %>
   <form action='/sessions' method='post'>
     <input type='hidden' name='authenticity_token' value='<%= form_authenticity_token %>'>
