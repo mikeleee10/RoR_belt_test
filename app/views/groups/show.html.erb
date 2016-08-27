@@ -2,7 +2,11 @@
 <h2><%= @group.name %></h2>
 <hr />
 <h4><%= @group.description %></h4>
-<p>Created by: <%= @group.user.first_name %> <%= @group.user.last_name %></p>
+<% if @group.user == current_user %>
+  <p>Created by: YOU</p>
+<% else %>
+  <p>Created by: <%= @group.user.first_name %> <%= @group.user.last_name %></p>
+<% end %>
 <hr />
 <p>Members:</p>
 <% if @group.memberships %>

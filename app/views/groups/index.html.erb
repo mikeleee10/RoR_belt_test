@@ -17,6 +17,13 @@
     <p><a href="/groups/<%= group.id %>"><%= group.name %></a></p>
     <p>Members: <%= group.memberships.count %></p>
     <p><%= group.description %></p>
+    <% if group.user == current_user %>
+      <form action="/groups/<%= group.id %>" method="post">
+        <input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>" />
+        <input type="hidden" name="_method" value="delete" />
+        <p><input type="submit" value="Delete" /></p>
+      </form>
+    <% end %>
     <hr />
   <% end %>
 <% end %>

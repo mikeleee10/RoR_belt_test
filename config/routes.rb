@@ -7,7 +7,9 @@ Rails.application.routes.draw do
 
   get '/groups' => 'groups#index'
   post '/groups' => 'groups#create'
+  delete '/groups/:id' => 'groups#destroy'
   get '/groups/:id' => 'groups#show'
+
 
   post '/memberships' => 'memberships#create'
   delete '/memberships' => 'memberships#destroy'
